@@ -1,3 +1,20 @@
+<?php
+
+require 'config/configuracion.php';
+require 'config/database.php';
+$db = new Database();
+$con = $db->conectar();
+
+$sql = $con->prepare("SELECT id, nombre, precio FROM juegos WHERE activo=1");
+$sql->execute();
+$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+$host= $_SERVER["HTTP_HOST"];
+$url= $_SERVER["REQUEST_URI"];
+echo "http://" . $host . $url;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
