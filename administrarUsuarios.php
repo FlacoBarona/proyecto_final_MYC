@@ -39,5 +39,47 @@
         </div>
     </header>
     
+    <main>
+        <div class="container">
+            <h2 class="text-center">ADMINISTRACION DE USUARIOS</h2>
+            <br/>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Clave</th>
+                            <th>Correo</th>
+                            <th>Opciones</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php foreach ($resultado as $row) { ?>
+                            <tr>
+                                <td><?php echo $row['id']; ?></td>
+                                <td><?php echo $row['usuario']; ?></td>
+                                <td><?php echo $row['clave']; ?></td>
+                                <td><?php echo $row['correo']; ?></td>
+                                <td><a href="modificarUsuario.php?id=<?php echo $row['id']?>" class="btn btn-primary">Editar</a>  
+                                <a href="eliminarUsuario.php?id=<?php echo $row['id']?>" onclick="return confirmarDeleteUsuario()" class="btn btn-success">Borrar</a></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+
+                </table>
+
+            </div>
+            <div class="form-floating mb-3 " >
+            <a href="Admin.php" class="btn btn-primary">Atras</a>
+            </div>
+
+
+
+        </div>
+    </main>
+    
 </body>
 </html>
