@@ -1,3 +1,13 @@
+<?php
+require 'config/configuracion.php';
+require 'config/database.php';
+$db = new Database();
+$con = $db->conectar();
+
+$sql = $con->prepare("SELECT * FROM usuarios");
+$sql->execute();
+$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+?>
 
 <!DOCTYPE html>
 <html lang="es">
