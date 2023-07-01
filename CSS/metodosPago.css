@@ -16,3 +16,16 @@
     border: 2px solid #3742fa;
 
 }
+.d-grid button[type="submit"]:hover{
+    background: none;
+}
+
+.paypal{
+    padding: 300px;
+    text-align: center;
+}
+
+.tarjeta{
+    padding: 350px;
+    text-align: center;
+}
