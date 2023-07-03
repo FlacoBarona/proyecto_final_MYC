@@ -50,7 +50,22 @@
                             <th>Opciones</th>
                             <th></th>
                         </tr>
-                    </thead>                    
+                    </thead>
+                    <tbody>
+                        <?php foreach ($resultado as $row) { ?>
+                            <tr>
+                                <td><?php echo $row['id']; ?></td>
+                                <td><?php echo $row['nombre']; ?></td>
+                                <td><?php echo $row['descripcion']; ?></td>
+                                <td><?php echo $row['precio']; ?></td>
+                                <td><?php echo $row['descuento']; ?></td>
+                                <td><?php echo $row['id_categoria']; ?></td>
+                                <td><?php echo $row['activo']; ?></td>
+                                <td><a href="modificarFrom.php?id=<?php echo $row['id']?>" class="btn btn-primary">Editar</a>  
+                                <a href="eliminarJuego.php?id=<?php echo $row['id']?>" onclick="return confirmarDelete()" class="btn btn-success">Borrar</a></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>             
                 </table>
             </div>
             <div class="form-floating mb-3 " >
