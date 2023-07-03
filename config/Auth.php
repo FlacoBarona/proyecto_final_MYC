@@ -38,4 +38,47 @@ function mostrarMensajes(array $errors){
     }            
 }
 
+function esNulo(array $parametros){
+    foreach($parametros as $parametro){
+        if(strlen(trim($parametro)) <1){
+            return true;
+        }
+    }
+    return false;
+}
+
+function esEmail($correo){
+    if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
+        return true;
+    }
+    return false;
+}
+
+function validaClave($clave, $confirmaClave){
+    if(Strcmp($clave, $confirmaClave) == 0){
+        return true;
+    }
+    return false;
+}
+
+function usuarioExiste($usuario, $con) {
+    $sql =$con->prepare("SELECT id FROM usuarios WHERE usuario LIKE ?");
+    $sql->execute([$usuario]);
+    if($sql->fetchColumn() > 0){
+        return true;;
+    }
+    return false;
+    
+}
+
+function registrar(array $datos, $con) {
+    $sql =$con->prepare( "INSERT INTO usuarios (correo, usuario, clave, claveConfirma) 
+            VALUES (?,?,?,?)");
+    if($sql->execute($datos)){
+        return true;;
+    }
+    return false;
+    
+}
+
 ?>
