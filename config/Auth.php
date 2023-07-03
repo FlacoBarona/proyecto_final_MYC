@@ -71,4 +71,14 @@ function usuarioExiste($usuario, $con) {
     
 }
 
+function registrar(array $datos, $con) {
+    $sql =$con->prepare( "INSERT INTO usuarios (correo, usuario, clave, claveConfirma) 
+            VALUES (?,?,?,?)");
+    if($sql->execute($datos)){
+        return true;;
+    }
+    return false;
+    
+}
+
 ?>
