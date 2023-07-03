@@ -38,4 +38,13 @@ function mostrarMensajes(array $errors){
     }            
 }
 
+function esNulo(array $parametros){
+    foreach($parametros as $parametro){
+        if(strlen(trim($parametro)) <1){
+            return true;
+        }
+    }
+    return false;
+}
+
 ?>
