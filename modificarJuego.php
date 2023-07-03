@@ -31,6 +31,34 @@
             </div>
         </div>
     </header>
+
+    <main>
+        <div class="container">
+            <h2 class="text-center">ADMINISTRACION DE JUEGOS</h2>
+            <br/>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Precio</th>
+                            <th>Descuento</th>
+                            <th>Categoria</th>
+                            <th>Activo</th>
+                            <th>Opciones</th>
+                            <th></th>
+                        </tr>
+                    </thead>                    
+                </table>
+            </div>
+            <div class="form-floating mb-3 " >
+            <a href="Admin.php" class="btn btn-primary">Atras</a>
+            </div>
+        </div>
+    </main>
+
 </body>
 
 </html>
