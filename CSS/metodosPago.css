@@ -1,0 +1,31 @@
+.caja{
+    padding: 250px;
+    text-align: center; 
+}
+
+
+.row{
+    height: 200px;
+}
+
+
+.d-grid button[type="submit"]{
+    border: 0;
+    background: #5352ed;
+    cursor: pointer;
+    border: 2px solid #3742fa;
+
+}
+.d-grid button[type="submit"]:hover{
+    background: none;
+}
+
+.paypal{
+    padding: 300px;
+    text-align: center;
+}
+
+.tarjeta{
+    padding: 350px;
+    text-align: center;
+}
