@@ -61,4 +61,14 @@ function validaClave($clave, $confirmaClave){
     return false;
 }
 
+function usuarioExiste($usuario, $con) {
+    $sql =$con->prepare("SELECT id FROM usuarios WHERE usuario LIKE ?");
+    $sql->execute([$usuario]);
+    if($sql->fetchColumn() > 0){
+        return true;;
+    }
+    return false;
+    
+}
+
 ?>
