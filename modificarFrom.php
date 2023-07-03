@@ -61,6 +61,43 @@ if (isset($_POST['modificar'])) {
       </div>
     </div>
   </header>
-  
+
+  <main>
+    <div class="container">
+      <div class="text-center">
+        <h2>Modificar Juego</h2>
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+          <div class="row">
+            <input type="hidden" name="id" value="<?php echo $resultado['id']; ?>">
+            <input type="text" name="nombre" class="form-control" value="<?php echo $resultado['nombre']; ?>" placeholder="Nombre" required>
+          </div>
+          <div class="row">
+            <input type="text" name="precio" class="form-control" value="<?php echo $resultado['precio']; ?>" placeholder="Precio" required>
+          </div>
+          <div class="row">
+            <input type="text" name="descuento" class="form-control" value="<?php echo $resultado['descuento']; ?>" placeholder="Descuento" required>
+          </div>
+          <div class="row">
+            <input type="text" name="activo" class="form-control" value="<?php echo $resultado['activo']; ?>" placeholder="Activo" required>
+          </div>
+          <div class="row">
+            <input type="text" name="categoria" class="form-control" value="<?php echo $resultado['id_categoria']; ?>" placeholder="Categoria" required>
+          </div>
+          <div class="row">
+            <input type="text" name="Descripcion" class="form-control" value="<?php echo $resultado['descripcion']; ?>" placeholder="Descripcion" required>
+          </div>
+          <br/>
+          <div class="row col-2 col-4">
+            <input type="submit" name="modificar" class="btn btn-success btn-sm btn-block" value="Modificar">
+          </div>
+          <br/>
+          <div class="row col-2 col-4">
+            <a href="modificarJuego.php" class="btn btn-primary">Atras</a>
+          </div>
+          <br/>
+        </form>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
