@@ -1,3 +1,51 @@
+<?php
+
+require 'config/database.php';
+require './config/Auth.php';
+$db = new Database();
+$con = $db->conectar();
+
+
+$errors = [];
+
+if (!empty($_POST)) {
+  $correo = trim($_POST['correo']);
+  $usuario = trim($_POST['usuario']);
+  $clave = trim($_POST['password']);
+  $claveConfirma = trim($_POST['passwordConfirmacion']);
+
+  if (esNulo([$correo, $usuario, $clave, $claveConfirma])) {
+    $errors[] = "Debe llenar todos los campos";
+  }
+
+  if (!esEmail($correo)) {
+    $errors[] = "Correo electronico no valido";
+  }
+
+  if (!validaClave($clave, $claveConfirma)) {
+    $errors[] = "Las claves no coinsiden";
+  }
+
+  if (usuarioExiste($usuario, $con)) {
+    $errors[] = "El nombre de usuario $usuario ya existe";
+  }
+
+  if (count($errors) == 0) {
+    $cod = registrar([$correo, $usuario, $clave, $claveConfirma], $con);
+    if($cod){
+      echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+      Usuario registrado correctamente
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>';
+    }
+
+  } else {
+    $errors[] = "Error al registrar el cliente";
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
