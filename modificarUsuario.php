@@ -57,5 +57,34 @@ if (isset($_POST['modificar'])) {
             </div>
         </div>
     </header>
+    <main>
+        <div class="container">
+            <div class="text-center">
+                <h2>Modificar Usuarios</h2>
+                <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+                    <div class="row">
+                        <input type="hidden" name="id" value="<?php echo $resultado['id']; ?>">
+                        <input type="text" name="usuario" class="form-control" value="<?php echo $resultado['usuario']; ?>" placeholder="Usuario" required>
+                    </div>
+                    <div class="row">
+                        <input type="text" name="clave" class="form-control" value="<?php echo $resultado['clave']; ?>" placeholder="Clave" required>
+                    </div>
+                    <div class="row">
+                        <input type="text" name="correo" class="form-control" value="<?php echo $resultado['correo']; ?>" placeholder="Correo" required>
+                    </div>
+                    <br/>
+                    <div class="row col-2 col-4">
+                        <input type="submit" name="modificar" class="btn btn-success btn-sm btn-block" value="Modificar">
+                    </div>
+                    <br/>
+                    <div class="row col-2 col-4">
+                        <a href="administrarUsuarios.php" class="btn btn-primary">Atras</a>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+    </main>
 </body>
 </html>
