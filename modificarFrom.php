@@ -1,3 +1,34 @@
+<?php
+session_start();
+require 'config/database.php';
+
+$db = new Database();
+$con = $db->conectar();
+
+$id = $_GET['id'];
+$sql = $con->prepare("SELECT * FROM juegos WHERE  id='$id'");
+$sql->execute();
+
+$resultado = $sql->fetch(PDO::FETCH_ASSOC);
+
+if (isset($_POST['modificar'])) {
+  $id = $_POST['id'];
+  $nombre = trim($_POST['nombre']);
+  $precio = trim($_POST['precio']);
+  $descuento = trim($_POST['descuento']);
+  $activo = trim($_POST['activo']);
+  $categoria = trim($_POST['categoria']);
+  $descripcion = trim($_POST['Descripcion']);
+
+  $actualiza =$con->prepare( "UPDATE juegos SET nombre='$nombre', descripcion='$descripcion', precio=$precio, descuento=$descuento,
+  id_categoria=$categoria, activo=$activo WHERE id='$id'");
+  $actualiza->execute();
+  header("location:modificarJuego.php");
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
