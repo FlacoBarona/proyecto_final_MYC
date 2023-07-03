@@ -54,4 +54,11 @@ function esEmail($correo){
     return false;
 }
 
+function validaClave($clave, $confirmaClave){
+    if(Strcmp($clave, $confirmaClave) == 0){
+        return true;
+    }
+    return false;
+}
+
 ?>
