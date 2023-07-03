@@ -47,4 +47,11 @@ function esNulo(array $parametros){
     return false;
 }
 
+function esEmail($correo){
+    if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
+        return true;
+    }
+    return false;
+}
+
 ?>
