@@ -1,3 +1,29 @@
+<?php
+require 'config/database.php';
+require 'config/Auth.php';
+$db = new Database();
+$con = $db->conectar();
+
+$errors = [];
+
+if (!empty($_POST)) {
+  $usuario = trim($_POST['usuario']);
+  $clave = trim($_POST['password']);
+
+
+  if (count($errors) == 0) {
+    if(strcmp($usuario, 'Admin')==0 && $clave=='admin'){
+      $errors[] = inicioSesionAdmin($usuario,$clave,$con);
+    }else{
+      $errors[] = inicioSesion($usuario, $clave, $con);
+    }
+    
+  }
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
