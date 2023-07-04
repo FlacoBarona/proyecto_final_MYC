@@ -1,4 +1,31 @@
 <?php
+    require '../config/configuracion.php';
+    require '../config/database.php';
+
+    if (isset($_POST['action'])) {
+
+        $action = $_POST['action'];
+        $id = isset($_POST['id']) ? $_POST['id'] : 0;
+
+        if ($action == 'agregar') {
+            $cantidad = isset($_POST['cantidad']) ? $_POST['cantidad'] : 0;
+            $respuesta = agregar($id, $cantidad);
+
+            if($respuesta > 0){
+                $datos['ok'] = true;
+            } else{
+                $datos['ok'] = false;
+            }
+            $datos['sub'] = MONEDA . $respuesta;
+        }else if ($action == 'eliminar'){
+            $datos['ok'] = eliminar($id);
+
+        } else {
+            $datos['ok'] = false;
+        }
+    } else {
+        $datos['ok'] = false;
+    }
     function agregar($id, $cantidad)
     {
         $res = 0;
