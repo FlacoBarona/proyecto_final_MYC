@@ -51,5 +51,75 @@ if ($productos != null) {
             </div>
         </div>
     </header>
+    <main>
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Descuento</th>
+                            <th>Cantidad a comprar</th>
+                            <th>Subtotal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if ($lista_carrito == null) {
+                            echo '<tr><td colspan="5" class="text-center"><b>Lista vacia</b></td></tr>';
+                        } else {
+                            $total = 0;
+                            foreach ($lista_carrito as $producto) {
+                                $_id = $producto['id'];
+                                $nombre = $producto['nombre'];
+                                $precio = $producto['precio'];
+                                $descuento = $producto['descuento'];
+                                $cantidad = $producto['cantidad'];
+                                $precio_desc = $precio - (($precio * $descuento) / 100);
+                                $subtotal = $cantidad * $precio_desc;
+                                $total += $subtotal;
+                        ?>
+                                <tr>
+                                    <td><?php echo $nombre; ?></td>
+                                    <td><?php echo MONEDA . $precio; ?></td>
+                                    <td><?php echo $descuento . ' %'; ?></td>
+                                    <td>
+                                        <input type="number" min="1" max="10" step="1" value="<?php echo $cantidad; ?>" size="5" id="cantidad_<?php echo $_id; ?>" onchange="actualizaCantidad(this.value, <?php echo $_id; ?>)">
+                                    </td>
+                                    <td>
+                                        <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]">
+                                            <?php echo MONEDA . $subtotal; ?>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a id="eliminar" class="btn btn-warning btn-sm" data-bs-id="<?php echo $_id; ?>" data-bs-toggle="modal" data-bs-target="#eliminaModal"> Eliminar</a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+
+                            <tr>
+                                <td colspan="3"></td>
+                                <td colspan="1" class="h3">Total:</td>
+                                <td colspan="2">
+                                    <p class="h3" id="total"><?php echo MONEDA . $total ?></p>
+                                </td>
+                            </tr>
+                    </tbody>
+                <?php } ?>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-md-5 offset-md-7 d-grid gap-2">
+                <a href="metodosPago.php" class="btn btn-primary btn-lg">
+                Realizar pago
+                    </a> 
+                    <a href="index.php" class="btn btn-success">
+                        Regresar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
