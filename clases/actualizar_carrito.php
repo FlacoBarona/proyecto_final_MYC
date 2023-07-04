@@ -24,4 +24,15 @@
             return $res;
         }
     }
+
+    function eliminar($id){
+        if($id > 0){
+            if(isset($_SESSION['carrito']['productos'][$id])){
+                unset($_SESSION['carrito']['productos'][$id]);
+                return true;
+            }
+        }else {
+            return false;
+        }
+    }
 ?>
