@@ -29,3 +29,11 @@ function mostrarPaypal(){
 function ocultarPaypal(){
     document.getElementById('paypal').style.display = 'none';
 }
+
+function mostrarTarjeta(){
+    document.getElementById('tarjeta').style.display = 'block';
+}
+
+function ocultarTarjeta(){
+    document.getElementById('tarjeta').style.display = 'none';
+}
