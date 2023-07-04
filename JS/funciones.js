@@ -21,3 +21,11 @@ function confirmarDelete(){
 function insertarJuego(){
     return alert("Juego agregado correctamente");
 }
+
+function mostrarPaypal(){
+    document.getElementById('paypal').style.display = 'block';
+}
+
+function ocultarPaypal(){
+    document.getElementById('paypal').style.display = 'none';
+}
