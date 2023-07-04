@@ -19,7 +19,7 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-<header>
+    <header>
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a href="#" class="navbar-brand">
@@ -37,5 +37,26 @@
             </div>
         </div>
     </header>
+    <main>
+        <div class="containera">
+            <div class="row">
+                <div class="col-md-9 col-lg-8 mx-auto">
+                <?php mostrarMensajes($errors); ?>
+                    <form action="#" class="caja">
+                        <h3 class="login-heading mb-4">ELIJA SU METODO DE PAGO</h3>
+                        <div class="d-grid">
+                            <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit" onclick="mostrarPaypal(), ocultarTarjeta() ">PayPal</button>
+                        </div>
+                        <div class="d-grid">
+                            <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit" onclick="ocultarPaypal(), mostrarTarjeta()">Tarjeta de credito</button>
+                        </div>
+                        <div class="d-grid">
+                            <a href="index.php" class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
