@@ -1,3 +1,25 @@
+<?php
+
+require 'config/configuracion.php';
+require 'config/database.php';
+$db = new Database();
+$con = $db->conectar();
+
+$productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
+
+
+$lista_carrito = array();
+
+if ($productos != null) {
+    foreach ($productos as $clave => $cantidad) {
+        $sql = $con->prepare("SELECT id, nombre, precio, descuento, $cantidad AS cantidad FROM juegos WHERE id=? ");
+        $sql->execute([$clave]);
+        $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
