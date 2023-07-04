@@ -8,11 +8,9 @@
     <title>Tienda Online</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="css/styles.css" rel="stylesheet">
-    <title>Admin</title>
 </head>
 
 <body>
-
 <header>
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
@@ -25,7 +23,6 @@
                 <div class="collapse navbar-collapse" id="navbarHeader">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-
                     </ul>
                     <a href="inicioSesion.php" class="btn btn-success">
                         Cerrar sesion
@@ -35,40 +32,60 @@
             </div>
         </div>
     </header>
-
-    <main>
-        <div class="container ">
-            <br/>
-            <br/>
-            <h3 class="text-center">ADMINISTRACION DE LA TIENDA</h3>
-            <br/>
-            <br/>
-            <br/>
-            <div class="row">
-                <div class="col-md-9 col-lg-8 mx-auto">
-                    <form class="box">
-                        <div class="d-grid mb-2" action="insertarJuego.php">
-                            <a href="insertarJuego.php" class="btn btn-success"> Insertar juego</a>
-                        </div>
-                        <br/>
-                        <div class="d-grid mb-2" action="modificarJuego.php">
-                            <a href="modificarJuego.php" class="btn btn-primary">Administrar Juegos</a>
-                        </div>
-                        <br/>
-                        <div class="d-grid mb-2" action="eliminarJuego.php">
-                            <a href="administrarUsuarios.php" class="btn btn-success">Administrar Usuarios</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-
+    <form action="" method="post">
+        <h2>Buscar juego</h2>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="campo" name="campo" placeholder="Ingrese el juego" required>
+            <label for="campo">Ingrese el nombre del juego</label>
         </div>
-    </main>
+    </form>
+
+    <div class="table-responsive">
 
 
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Nombre</td>
+                    <td>Descripcion</td>
+                    <td>Precio</td>
+                    <td>Descuento</td>
+                    <td>Categoria</td>
+                    <td>Opcion</td>
+                </tr>
+            </thead>
+            <tbody id="content">
+
+            </tbody>
+        </table>
+
+        <div class="row col-2 col-4">
+            <a href="index.php" class="btn btn-primary">Atras</a>
+        </div>
+
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script>
+        getData()
 
-    
+        document.getElementById("campo").addEventListener("keyup", getData)
+
+        function getData() {
+            let input = document.getElementById("campo").value
+            let content = document.getElementById("content")
+            let url = "clases/buscar.php"
+            let formaData = new FormData()
+            formaData.append('campo', input)
+
+            fetch(url, {
+                    method: "POST",
+                    body: formaData
+                }).then(response => response.json())
+                .then(data => {
+                    content.innerHTML = data
+                }).catch(err => console.log(err))
+        }
+    </script>
+
 </body>
 </html>
