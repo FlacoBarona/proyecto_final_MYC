@@ -56,6 +56,51 @@ if (isset($_POST['agregar'])) {
             </div>
         </div>
     </header>
+
+    <main>
+        <div class="container text-center">
+            <h2>Agregar videojuego</h2>
+            <br/>
+            <center>
+                <form  method="post" autocomplete="off">
+                    <div class="col-md-6">
+                        <label for="nombreJuego"><span class="text-danger">*</span>Nombre del videojuego</label>
+                        <input type="text" name="nombreJuego" id="nombreJuego" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="precio"><span class="text-danger">*</span>Precio</label>
+                        <input type="number" name="precio" id="precio" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="descuento"><span class="text-danger">*</span>Descuento</label>
+                        <input type="number" name="descuento" id="descuento" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="activo"><span class="text-danger">*</span>Activo</label>
+                        <input type="number" name="activo" id="activo" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="categoria"><span class="text-danger">*</span>Categoria</label>
+                        <input type="number" name="categoria" id="categoria" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="descripcion"><span class="text-danger">*</span>Descripcion</label>
+                        <input type="text" style="HEIGHT: 98px;" name="descripcion" id="descripcion" class="form-control" required>
+                    </div>
+                    <br/>
+                    <div class="col-12">
+                        <a href="admin.php" class="btn btn-success">Atras</a>
+                        <input type="submit" name="agregar" class="btn btn-primary btn-sm btn-block" onclick="insertarJuego()" value="Agregar">
+                    </div>
+
+                </form>
+            </center>
+        </div>
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/funciones.js"></script>
     
 </body>
 </html>
