@@ -179,6 +179,26 @@ if ($productos != null) {
                     }
                 })
         }
+        function eliminar() {
+
+            let botonElimina = document.getElementById('btn-elimina')
+            let id = botonElimina.value
+            let url = 'clases/actualizar_carrito.php'
+            let formData = new FormData()
+            formData.append('action', 'eliminar')
+            formData.append('id', id)
+
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+                mode: 'cors'
+            }).then(response => response.json())
+                .then(data => {
+                    if (data.ok) {
+                        location.reload()
+                    }
+                })
+        }
     </script>
 </body>
 </html>
