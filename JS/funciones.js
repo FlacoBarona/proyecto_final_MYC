@@ -17,3 +17,7 @@ function confirmarDelete(){
         return false;
     }
 }
+
+function insertarJuego(){
+    return alert("Juego agregado correctamente");
+}
