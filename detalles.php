@@ -87,6 +87,90 @@ if ($id == '' || $token == '') {
       </div>
     </div>
   </header>
+
+
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 order-md-1">
+          <div id="carouselImages" class="carousel slide" data-bs-ride="caroules">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselImages" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselImages" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselImages" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="10000">
+                <img src="<?php echo $rutaImgen; ?>" class="d-block w-100">
+              </div>
+              <?php foreach ($imagenes as $img) { ?>
+                <div class="carousel-item" data-bs-interval="10000">
+                  <img src="<?php echo $img; ?>" class="d-block w-100">
+                </div>
+              <?php } ?>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselImages" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselImages" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
+        </div>
+        <div class="col-md-6 order-md-2">
+          <h2><?php echo $nombre; ?></h2>
+          <?php if ($descuento > 0) { ?>
+            <p><del> <?php echo MONEDA . $precio; ?> </del></p>
+            <h2>
+              <?php echo MONEDA . $precio_des; ?>
+              <small class="text-success"> <?php echo $descuento; ?>% descuento</small>
+            </h2>
+          <?php } else { ?>
+            <h2><?php echo MONEDA . $precio; ?></h2>
+          <?php } ?>
+          <p class="lead">
+            <?php echo $descripcion; ?>
+          </p>
+          <div class="d-grid gap-3 col-10 mx-auto">
+            <a href="metodosPago.php" class="btn btn-primary">Comprar ahora</a>
+            <button class="btn btn-outline-primary" type="button" onclick="addProducto(<?php echo $id; ?>, '<?php echo $token_tmp;?>')">
+              Agregar al carrito
+            </button>
+            <a href="index.php" class="btn btn-success">Atras</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+  <script>
+    function addProducto(id, token){
+      let url = 'clases/carrito.php'
+      let formData = new FormData()
+      formData.append('id', id)
+      formData.append('token', token)
+
+      fetch(url, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors'
+      }).then(response => response.json())
+      .then(data => {
+        if(data.ok){
+          let elemento = document.getElementById("num_cart")
+          elemento.innerHTML = data.numero
+        }
+      })
+    }
+  </script>
     
 </body>
 </html>
