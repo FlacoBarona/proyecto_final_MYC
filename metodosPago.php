@@ -1,3 +1,48 @@
+<?php
+
+require './config/Auth.php';
+$errors = [];
+
+if (!empty($_POST)) {
+  $correo = trim($_POST['correo']);
+  $clave = trim($_POST['clave']);
+
+  $num_tarjeta = trim($_POST['num_tarjeta']);
+  $fecha_caducidad = trim($_POST['fecha_cad']);
+  $codigo_tarjeta= trim($_POST['cod_tar']);
+  $nombre = trim($_POST['nombre']);
+  $apellido = trim($_POST['apellido']);
+  $localidad = trim($_POST['localidad']);
+  $direccion = trim($_POST['direccion']);
+  $pais = trim($_POST['pais']);
+  $telefono = trim($_POST['telf']);
+
+  if (esNulo([$correo, $clave])) {
+    $errors[] = "Debe llenar todos los campos";
+  }else{
+    if(esNulo([$num_tarjeta, $fecha_caducidad, $codigo_tarjeta, $nombre, $apellido, $localidad, $direccion,
+    $pais, $telefono])){
+        $errors[] = "Debe llenar todos los campos";
+    }
+  }
+
+  if (!esEmail($correo)) {
+    $errors[] = "Correo electronico no valido";
+  }
+
+  if (count($errors) == 0) {
+      echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+      Usuario registrado correctamente
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>';
+    
+  } else {
+    $errors[] = "Error al realizar la compra";
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
