@@ -32,6 +32,38 @@
             </div>
         </div>
     </header>
+    <form action="" method="post">
+        <h2>Buscar juego</h2>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="campo" name="campo" placeholder="Ingrese el juego" required>
+            <label for="campo">Ingrese el nombre del juego</label>
+        </div>
+    </form>
+
+    <div class="table-responsive">
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Nombre</td>
+                    <td>Descripcion</td>
+                    <td>Precio</td>
+                    <td>Descuento</td>
+                    <td>Categoria</td>
+                    <td>Opcion</td>
+                </tr>
+            </thead>
+            <tbody id="content">
+
+            </tbody>
+        </table>
+
+        <div class="row col-2 col-4">
+            <a href="index.php" class="btn btn-primary">Atras</a>
+        </div>
+
+    </div>
 
 </body>
 </html>
