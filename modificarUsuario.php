@@ -15,9 +15,10 @@ if (isset($_POST['modificar'])) {
     $id = $_POST['id'];
     $usuario = trim($_POST['usuario']);
     $clave = trim($_POST['clave']);
+    $pass = encrypt($clave, $key);
     $correo = trim($_POST['correo']);
 
-    $actualiza = $con->prepare("UPDATE usuarios SET usuario='$usuario', clave='$clave', correo='$correo' WHERE id='$id'");
+    $actualiza = $con->prepare("UPDATE usuarios SET usuario='$usuario', clave='$pass', correo='$correo' WHERE id='$id'");
     $actualiza->execute();
     header("location:administrarUsuarios.php");
 }
@@ -68,7 +69,7 @@ if (isset($_POST['modificar'])) {
                         <input type="text" name="usuario" class="form-control" value="<?php echo $resultado['usuario']; ?>" placeholder="Usuario" required>
                     </div>
                     <div class="row">
-                        <input type="text" name="clave" class="form-control" value="<?php echo $resultado['clave']; ?>" placeholder="Clave" required>
+                        <input type="text" name="clave" class="form-control" value="<?php echo "".unencrypt($resultado['clave'], $key).""; ?>" placeholder="Clave" required>
                     </div>
                     <div class="row">
                         <input type="text" name="correo" class="form-control" value="<?php echo $resultado['correo']; ?>" placeholder="Correo" required>

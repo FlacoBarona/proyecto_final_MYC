@@ -71,7 +71,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                             <tr>
                                 <td><?php echo $row['id']; ?></td>
                                 <td><?php echo $row['usuario']; ?></td>
-                                <td><?php echo $row['clave']; ?></td>
+                                <td><?php echo "".unencrypt($row['clave'], $key).""; ?></td>
                                 <td><?php echo $row['correo']; ?></td>
                                 <td><a href="modificarUsuario.php?id=<?php echo $row['id']?>" class="btn btn-primary">Editar</a>  
                                 <a href="eliminarUsuario.php?id=<?php echo $row['id']?>" onclick="return confirmarDeleteUsuario()" class="btn btn-success">Borrar</a></td>
