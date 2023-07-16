@@ -31,7 +31,8 @@ if (!empty($_POST)) {
     }
 
     if (count($errors) == 0) {
-        $cod = registrar([$correo, $usuario, $clave, $claveConfirma], $con);
+        $pass = encrypt($clave, $key);
+        $cod = registrar([$correo, $usuario, $pass, $pass], $con);
         if ($cod) {
             echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
       Usuario registrado correctamente
