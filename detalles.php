@@ -171,6 +171,28 @@ if ($id == '' || $token == '') {
       })
     }
   </script>
-    
+  <footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="index.php"><i class="fas fa-home"></i> Inicio</a>                        
+      </div>
+      <div class="footer-info">
+        <p><i class="fas fa-envelope"></i> Contacto: jespinoza5229@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Dirección: Ambato, UTA</p>
+        <b></b>
+      </div>
+      
+      <div class="footer-content">
+        
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>          
+        </div>
+      </div>
+    </div>
+    <p class="footer-copyright">© 2023 Grupo 4. Todos los derechos reservados.</p>  
+</footer>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </body>
 </html>

@@ -181,5 +181,28 @@ if (!empty($_POST)) {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/funciones.js"></script>
+<footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="index.php"><i class="fas fa-home"></i> Inicio</a>                        
+      </div>
+      <div class="footer-info">
+        <p><i class="fas fa-envelope"></i> Contacto: jespinoza5229@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Dirección: Ambato, UTA</p>
+        <b></b>
+      </div>
+      
+      <div class="footer-content">
+        
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>          
+        </div>
+      </div>
+    </div>
+    <p class="footer-copyright">© 2023 Grupo 4. Todos los derechos reservados.</p>  
+</footer>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </body>
 </html>
