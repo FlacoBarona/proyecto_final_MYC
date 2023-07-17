@@ -115,6 +115,8 @@ if (isset($_SESSION['user_name'])) {
     </div>
   </main>
 
+  <script src="js/script.js"></script>
+
   <script>
     function addProducto(id, token) {
       obtenerValorPHP()
