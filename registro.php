@@ -13,6 +13,7 @@ if (!empty($_POST)) {
     $usuario = trim($_POST['usuario']);
     $clave = trim($_POST['password']);
     $claveConfirma = trim($_POST['passwordConfirmacion']);
+    $Tipo="User";
 
     if (esNulo([$correo, $usuario, $clave, $claveConfirma])) {
         $errors[] = "Debe llenar todos los campos";
@@ -32,7 +33,7 @@ if (!empty($_POST)) {
 
     if (count($errors) == 0) {
         $pass = encrypt($clave, $key);
-        $cod = registrar([$correo, $usuario, $pass, $pass], $con);
+        $cod = registrar([$correo, $usuario, $pass, $pass,$Tipo], $con);
         if ($cod) {
             echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
       Usuario registrado correctamente
