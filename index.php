@@ -77,7 +77,7 @@ if (isset($_SESSION['user_name'])) {
       <input type="text" id="search-input" placeholder="Buscar juegos...">
     </div>
     <br>
-    <div class="container">
+    <div class="container" id="game-list">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <?php foreach ($resultado as $row) { ?>
           <div class="col">
