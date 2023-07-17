@@ -53,6 +53,11 @@ if ($id == '' || $token == '') {
   }
 }
 
+if (isset($_SESSION['user_name'])) {
+  $boton1 .= '<a href="metodosPago.php" class="btn btn-primary">Comprar ahora</a>';
+  $boton2 .= '<button class="btn btn-outline-primary" type="button" onclick="addProducto(' . $id . ', \'' . $token_tmp . '\')">Agregar al carrito</button>';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -135,10 +140,8 @@ if ($id == '' || $token == '') {
             <?php echo $descripcion; ?>
           </p>
           <div class="d-grid gap-3 col-10 mx-auto">
-            <a href="metodosPago.php" class="btn btn-primary">Comprar ahora</a>
-            <button class="btn btn-outline-primary" type="button" onclick="addProducto(<?php echo $id; ?>, '<?php echo $token_tmp;?>')">
-              Agregar al carrito
-            </button>
+            <?php echo $boton1?> 
+            <?php echo $boton2?>
             <a href="index.php" class="btn btn-success">Atras</a>
           </div>
         </div>
