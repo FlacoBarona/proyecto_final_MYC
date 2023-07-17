@@ -75,8 +75,8 @@
     }
 
     function registrar(array $datos, $con) {
-        $sql =$con->prepare( "INSERT INTO usuarios (correo, usuario, clave, claveConfirma) 
-                VALUES (?,?,?,?)");
+        $sql =$con->prepare( "INSERT INTO usuarios (correo, usuario, clave, claveConfirma,tipo) 
+                VALUES (?,?,?,?,?)");
         if($sql->execute($datos)){
             return true;;
         }
