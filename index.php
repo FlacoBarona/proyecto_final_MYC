@@ -11,7 +11,15 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 $host = $_SERVER["HTTP_HOST"];
 $url = $_SERVER["REQUEST_URI"];
-echo "http://" . $host . $url;
+//echo "http://" . $host . $url;
+
+$boton = '';
+
+if (isset($_SESSION['user_name'])) {
+  $boton .= '<a href="../Tienda_online/config/logout.php" class="btn btn-success">Cerrar sesion</a>';
+} else {
+  $boton .= '<a href="inicioSesion.php" class="btn btn-success">Iniciar Sesion</a>';
+}
 
 ?>
 
@@ -43,15 +51,10 @@ echo "http://" . $host . $url;
 
 
           </ul>
-          <a href="buscarJuego.php" class="btn btn-primary">
-            Find game
-          </a>
           <a href="checkout.php" class="btn btn-primary">
             Car <samp id="num_cart" class="badge bg-secondary"><?php echo $num_cart ?></samp>
           </a>
-          <a href="inicioSesion.php" class="btn btn-success">
-            Log out
-          </a>
+          <?php echo $boton ?>
         </div>
 
       </div>
@@ -95,22 +98,53 @@ echo "http://" . $host . $url;
 
   <script>
     function addProducto(id, token) {
-      let url = 'clases/carrito.php'
-      let formData = new FormData()
-      formData.append('id', id)
-      formData.append('token', token)
+      obtenerValorPHP()
+        .then(function(valor) {
+          console.log('Valor desde PHP: ' + valor);
 
-      fetch(url, {
-          method: 'POST',
-          body: formData,
-          mode: 'cors'
-        }).then(response => response.json())
-        .then(data => {
-          if (data.ok) {
-            let elemento = document.getElementById("num_cart")
-            elemento.innerHTML = data.numero
+          if (valor == 'true') {
+            let url = 'clases/carrito.php'
+            let formData = new FormData()
+            formData.append('id', id)
+            formData.append('token', token)
+
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+                mode: 'cors'
+              }).then(response => response.json())
+              .then(data => {
+                if (data.ok) {
+                  let elemento = document.getElementById("num_cart")
+                  elemento.innerHTML = data.numero
+                }
+              })
+          }else{
+            window.location.href = "inicioSesion.php";
           }
         })
+        .catch(function(error) {
+          console.error('Error en la solicitud AJAX:', error);
+        });
+    }
+
+    function obtenerValorPHP() {
+      return new Promise(function(resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'login.php', true);
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            var valorPHP = xhr.responseText; 
+            resolve(valorPHP); 
+          } else {
+            reject(xhr.statusText); 
+          }
+        };
+        xhr.onerror = function() {
+          reject(xhr.statusText); 
+        };
+        xhr.send();
+      });
     }
   </script>
 
