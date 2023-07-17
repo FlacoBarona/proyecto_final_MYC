@@ -5,7 +5,7 @@ require 'config/database.php';
 $db = new Database();
 $con = $db->conectar();
 
-$sql = $con->prepare("SELECT id, nombre, precio FROM juegos WHERE activo=1");
+$sql = $con->prepare("SELECT * FROM juegos WHERE activo=1");
 $sql->execute();
 $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
@@ -78,7 +78,11 @@ if (isset($_SESSION['user_name'])) {
               <img src="<?php echo $imagen; ?>">
               <div class="card-body">
                 <h5 class="card-title"><?php echo $row['nombre']; ?></h5>
-                <p class="card-text"><?php echo $row['precio'] . ' $'; ?></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <p class="card-text"><?php echo $row['plataforma']; ?></p>
+                  <p class="card-text"><?php echo $row['precio'] . ' $'; ?></p>
+                </div>
+                <p class="card-text"><?php echo $row['jugabilidad']; ?></p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <a href="detalles.php?id=<?php echo $row['id']; ?> &token=<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>" class="btn btn-primary">Detalles</a>
