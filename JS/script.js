@@ -78,6 +78,12 @@ function showFilteredGames(games) {
     gameList.appendChild(gameContainer);
   }
 
+  var searchInput = document.getElementById('search-input');
+
+    searchInput.addEventListener('input', function() {
+        searchGames();
+    });
+
 
 function searchGames() {
     var input = searchInput.value.toLowerCase();
