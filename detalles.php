@@ -21,7 +21,7 @@ if ($id == '' || $token == '') {
     $sql->execute([$id]);
     if ($sql->fetchColumn() > 0) {
 
-      $sql = $con->prepare("SELECT nombre, descripcion, precio, descuento FROM juegos WHERE id=? AND  activo=1 LIMIT 1");
+      $sql = $con->prepare("SELECT * FROM juegos WHERE id=? AND  activo=1 LIMIT 1");
       $sql->execute([$id]);
       $row = $sql->fetch(PDO::FETCH_ASSOC);
       $nombre = $row['nombre'];
@@ -30,6 +30,15 @@ if ($id == '' || $token == '') {
       $descuento = $row['descuento'];
       $precio_des = $precio - (($precio * $descuento) / 100);
       $dir_images = 'Tienda_online/images/juegos/' . $id . '/';
+
+      $categoria = $row['id_categoria'];
+      $plataforma = $row['plataforma'];
+      $requisitos = $row['requisitos'];
+      $jugabilidad = $row['jugabilidad'];
+      $sqlCat = $con->query("SELECT nombre from categorias where id=$categoria;");
+      $cate = $sqlCat->fetch(PDO::FETCH_ASSOC);
+
+      $cat = $cate['nombre'];
 
       $rutaImgen = $dir_images . 'principal.jepg';
 
@@ -62,6 +71,7 @@ if (isset($_SESSION['user_name'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,9 +80,10 @@ if (isset($_SESSION['user_name'])) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link href="css/styles.css" rel="stylesheet">
 </head>
+
 <body>
 
-<header>
+  <header>
     <div class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a href="#" class="navbar-brand">
@@ -85,7 +96,7 @@ if (isset($_SESSION['user_name'])) {
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           </ul>
           <a href="checkout.php" class="btn btn-primary">
-            Carrito <samp id="num_cart" class="badge bg-secondary"><?php echo $num_cart?></samp>
+            Carrito <samp id="num_cart" class="badge bg-secondary"><?php echo $num_cart ?></samp>
           </a>
         </div>
 
@@ -139,9 +150,25 @@ if (isset($_SESSION['user_name'])) {
           <p class="lead">
             <?php echo $descripcion; ?>
           </p>
+
+          <p class="lead">
+            <small class="lead"> Categoria: </small>
+            <?php echo $cat; ?>
+          </p>
+          <p class="lead">
+            <small class="lead"> Plataforma: </small>
+            <?php echo $plataforma; ?>
+          </p>
+          <p class="lead">
+            <small class="lead"> Requisitos del sistema: </small>
+            <?php echo $requisitos; ?>
+          </p>
+          <p class="lead">
+            <?php echo $jugabilidad; ?>
+          </p>
           <div class="d-grid gap-3 col-10 mx-auto">
-            <?php echo $boton1?> 
-            <?php echo $boton2?>
+            <?php echo $boton1 ?>
+            <?php echo $boton2 ?>
             <a href="index.php" class="btn btn-success">Atras</a>
           </div>
         </div>
@@ -151,51 +178,51 @@ if (isset($_SESSION['user_name'])) {
   </main>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" 
-  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
   <script>
-    function addProducto(id, token){
+    function addProducto(id, token) {
       let url = 'clases/carrito.php'
       let formData = new FormData()
       formData.append('id', id)
       formData.append('token', token)
 
       fetch(url, {
-        method: 'POST',
-        body: formData,
-        mode: 'cors'
-      }).then(response => response.json())
-      .then(data => {
-        if(data.ok){
-          let elemento = document.getElementById("num_cart")
-          elemento.innerHTML = data.numero
-        }
-      })
+          method: 'POST',
+          body: formData,
+          mode: 'cors'
+        }).then(response => response.json())
+        .then(data => {
+          if (data.ok) {
+            let elemento = document.getElementById("num_cart")
+            elemento.innerHTML = data.numero
+          }
+        })
     }
   </script>
   <footer>
     <div class="footer-content">
       <div class="footer-links">
-        <a href="index.php"><i class="fas fa-home"></i> Inicio</a>                        
+        <a href="index.php"><i class="fas fa-home"></i> Inicio</a>
       </div>
       <div class="footer-info">
         <p><i class="fas fa-envelope"></i> Contacto: jespinoza5229@gmail.com</p>
         <p><i class="fas fa-map-marker-alt"></i> Dirección: Ambato, UTA</p>
         <b></b>
       </div>
-      
+
       <div class="footer-content">
-        
+
         <div class="social-icons">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>          
+          <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
     </div>
-    <p class="footer-copyright">© 2023 Grupo 4. Todos los derechos reservados.</p>  
-</footer>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <p class="footer-copyright">© 2023 Grupo 4. Todos los derechos reservados.</p>
+  </footer>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </body>
+
 </html>
