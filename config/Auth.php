@@ -1,6 +1,7 @@
 <?php
 
     function inicioSesion($usuario, $clave, $con) {
+        session_start();
         $key = "proj3ctSMC04";
         $sql = $con->prepare("SELECT id, usuario FROM usuarios WHERE usuario=? AND clave=?");   
         $pass = encrypt($clave, $key);
