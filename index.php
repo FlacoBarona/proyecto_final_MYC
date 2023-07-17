@@ -11,7 +11,15 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 $host = $_SERVER["HTTP_HOST"];
 $url = $_SERVER["REQUEST_URI"];
-echo "http://" . $host . $url;
+//echo "http://" . $host . $url;
+
+$boton = '';
+
+if (isset($_SESSION['user_name'])) {
+  $boton .= '<a href="../Tienda_online/config/logout.php" class="btn btn-success">Cerrar sesion</a>';
+} else {
+  $boton .= '<a href="inicioSesion.php" class="btn btn-success">Iniciar Sesion</a>';
+}
 
 ?>
 
@@ -43,15 +51,10 @@ echo "http://" . $host . $url;
 
 
           </ul>
-          <a href="buscarJuego.php" class="btn btn-primary">
-            Find game
-          </a>
           <a href="checkout.php" class="btn btn-primary">
             Car <samp id="num_cart" class="badge bg-secondary"><?php echo $num_cart ?></samp>
           </a>
-          <a href="inicioSesion.php" class="btn btn-success">
-            Log out
-          </a>
+          <?php echo $boton ?>
         </div>
 
       </div>
