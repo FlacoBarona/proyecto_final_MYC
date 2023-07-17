@@ -98,22 +98,53 @@ if (isset($_SESSION['user_name'])) {
 
   <script>
     function addProducto(id, token) {
-      let url = 'clases/carrito.php'
-      let formData = new FormData()
-      formData.append('id', id)
-      formData.append('token', token)
+      obtenerValorPHP()
+        .then(function(valor) {
+          console.log('Valor desde PHP: ' + valor);
 
-      fetch(url, {
-          method: 'POST',
-          body: formData,
-          mode: 'cors'
-        }).then(response => response.json())
-        .then(data => {
-          if (data.ok) {
-            let elemento = document.getElementById("num_cart")
-            elemento.innerHTML = data.numero
+          if (valor == 'true') {
+            let url = 'clases/carrito.php'
+            let formData = new FormData()
+            formData.append('id', id)
+            formData.append('token', token)
+
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+                mode: 'cors'
+              }).then(response => response.json())
+              .then(data => {
+                if (data.ok) {
+                  let elemento = document.getElementById("num_cart")
+                  elemento.innerHTML = data.numero
+                }
+              })
+          }else{
+            window.location.href = "inicioSesion.php";
           }
         })
+        .catch(function(error) {
+          console.error('Error en la solicitud AJAX:', error);
+        });
+    }
+
+    function obtenerValorPHP() {
+      return new Promise(function(resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'login.php', true);
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            var valorPHP = xhr.responseText; 
+            resolve(valorPHP); 
+          } else {
+            reject(xhr.statusText); 
+          }
+        };
+        xhr.onerror = function() {
+          reject(xhr.statusText); 
+        };
+        xhr.send();
+      });
     }
   </script>
 
