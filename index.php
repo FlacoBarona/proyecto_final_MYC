@@ -32,8 +32,19 @@ if (isset($_SESSION['user_name'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <title>Online Store</title>
+  <style>
+    .search-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .search-container input[type=text] {
+      padding: 10px;
+      width: 300px;
+    }
+  </style>
 </head>
 
 <body>
@@ -62,7 +73,11 @@ if (isset($_SESSION['user_name'])) {
   </header>
 
   <main>
-    <div class="container">
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Buscar juegos...">
+    </div>
+    <br>
+    <div class="container" id="game-list">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <?php foreach ($resultado as $row) { ?>
           <div class="col">
@@ -100,6 +115,8 @@ if (isset($_SESSION['user_name'])) {
     </div>
   </main>
 
+  <script src="js/script.js"></script>
+
   <script>
     function addProducto(id, token) {
       obtenerValorPHP()
@@ -123,7 +140,7 @@ if (isset($_SESSION['user_name'])) {
                   elemento.innerHTML = data.numero
                 }
               })
-          }else{
+          } else {
             window.location.href = "inicioSesion.php";
           }
         })
@@ -138,42 +155,42 @@ if (isset($_SESSION['user_name'])) {
         xhr.open('GET', 'login.php', true);
         xhr.onload = function() {
           if (xhr.status === 200) {
-            var valorPHP = xhr.responseText; 
-            resolve(valorPHP); 
+            var valorPHP = xhr.responseText;
+            resolve(valorPHP);
           } else {
-            reject(xhr.statusText); 
+            reject(xhr.statusText);
           }
         };
         xhr.onerror = function() {
-          reject(xhr.statusText); 
+          reject(xhr.statusText);
         };
         xhr.send();
       });
     }
   </script>
 
-<footer>
-<div class="footer-content">
+  <footer>
+    <div class="footer-content">
       <div class="footer-links">
-        <a href="index.php"><i class="fas fa-home"></i> Inicio</a>                        
+        <a href="index.php"><i class="fas fa-home"></i> Inicio</a>
       </div>
       <div class="footer-info">
         <p><i class="fas fa-envelope"></i> Contacto: jespinoza5229@gmail.com</p>
         <p><i class="fas fa-map-marker-alt"></i> Dirección: Ambato, UTA</p>
         <b></b>
       </div>
-      
+
       <div class="footer-content">
-        
+
         <div class="social-icons">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>          
+          <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
     </div>
-    <p class="footer-copyright">© 2023 Grupo 4. Todos los derechos reservados.</p>  
-</footer>
+    <p class="footer-copyright">© 2023 Grupo 4. Todos los derechos reservados.</p>
+  </footer>
 
 </body>
 
