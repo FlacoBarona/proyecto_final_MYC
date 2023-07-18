@@ -16,9 +16,10 @@ $url = $_SERVER["REQUEST_URI"];
 $boton = '';
 
 if (isset($_SESSION['user_name'])) {
-  $boton .= '<a href="../Tienda_online/config/logout.php" class="btn btn-success">Cerrar sesion</a>';
+  $boton .= '<a href="../Tienda_online/config/logout.php" class="log-out">Cerrar sesion</a>
+  ';"<img class='icon' src='https://img1.picmix.com/output/stamp/normal/9/6/5/4/314569_78e0a.gif' alt='Icon'>";
 } else {
-  $boton .= '<a href="inicioSesion.php" class="btn btn-success">Iniciar Sesion</a>';
+  $boton .= '<a href="inicioSesion.php" class="btn btn-success">Iniciar Sesion</a>';"<img class='icon' src='https://i.pinimg.com/originals/4f/6a/31/4f6a318bb2bd6ffca64986f59d0112c8.png' alt='Icon'>";
 }
 
 ?>
@@ -53,6 +54,7 @@ if (isset($_SESSION['user_name'])) {
       <div class="container">
         <a href="#" class="navbar-brand">
           <strong>Games Store</strong>
+          <img class='icon-boo' src='https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/bc25ec3f-b1c8-4630-91e9-1e260b289f2d/d91zy67-424b516e-5eee-416e-94a8-cc5cb5eb718a.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2JjMjVlYzNmLWIxYzgtNDYzMC05MWU5LTFlMjYwYjI4OWYyZFwvZDkxenk2Ny00MjRiNTE2ZS01ZWVlLTQxNmUtOTRhOC1jYzVjYjVlYjcxOGEuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Qr0N9B4Rk1sgjiO7aP9b1VB25B2Cl6C9QLYrFMBTl48' alt='Icon'>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -62,8 +64,9 @@ if (isset($_SESSION['user_name'])) {
 
 
           </ul>
-          <a href="checkout.php" class="btn btn-primary">
-            Car <samp id="num_cart" class="badge bg-secondary"><?php echo $num_cart ?></samp>
+          <a href="checkout.php" class="shop-car">
+            Cart <samp id="num_cart" class="badge bg-secondary"><?php echo $num_cart ?></samp>
+            <img class='icon' src='https://media2.giphy.com/media/Ut9IfYd8U1C0CNQi76/200w.gif?cid=790b761157x2ne14nnh4gszmrgij3jieotmmrk5rlf0mornr&ep=v1_gifs_search&rid=200w.gif&ct=g' alt='Icon'>
           </a>
           <?php echo $boton ?>
         </div>
@@ -102,9 +105,10 @@ if (isset($_SESSION['user_name'])) {
                   <div class="btn-group">
                     <a href="detalles.php?id=<?php echo $row['id']; ?> &token=<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>" class="btn btn-primary">Detalles</a>
                   </div>
-                  <button class="btn btn-outline-success" type="button" onclick="addProducto(<?php echo $row['id']; ?>, 
+                  <button class="shop-car" type="button" onclick="addProducto(<?php echo $row['id']; ?>, 
                    '<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>')">
                     Agregar al carrito
+                    <img class='icon-cart' src='https://cdn.pixabay.com/animation/2023/03/22/04/48/04-48-41-618_512.gif' alt='Icon'>
                   </button>
                 </div>
               </div>
