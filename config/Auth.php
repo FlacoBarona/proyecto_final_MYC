@@ -1,8 +1,11 @@
 <?php
 
     function inicioSesion($usuario, $clave, $con) {
+        session_start();
+        $key = "proj3ctSMC04";
         $sql = $con->prepare("SELECT id, usuario FROM usuarios WHERE usuario=? AND clave=?");   
-        $sql->execute([$usuario, $clave]); 
+        $pass = encrypt($clave, $key);
+        $sql->execute([$usuario, $pass]); 
         if ($row = $sql->fetch(PDO::FETCH_ASSOC)) {  
             $_SESSION['used_id'] = $row['id'];
             $_SESSION['used_name'] = $row['usuario'];
@@ -72,8 +75,8 @@
     }
 
     function registrar(array $datos, $con) {
-        $sql =$con->prepare( "INSERT INTO usuarios (correo, usuario, clave, claveConfirma) 
-                VALUES (?,?,?,?)");
+        $sql =$con->prepare( "INSERT INTO usuarios (correo, usuario, clave, claveConfirma,tipo) 
+                VALUES (?,?,?,?,?)");
         if($sql->execute($datos)){
             return true;;
         }
@@ -86,4 +89,27 @@
         $sql->execute();
     }
 
+    $key = "proj3ctSMC04";
+    function encrypt($data, $key){
+        $result = '';
+            for ($i = 0; $i < strlen($data); $i++) {
+                $char = substr($data, $i, 1);
+                $keychar = substr($key, ($i % strlen($key)) - 1, 1);
+                $char = chr(ord($char) + ord($keychar));
+                $result .= $char;
+            }
+            return base64_encode($result);
+    }
+
+    function unencrypt($data, $key){
+        $result = '';
+            $string = base64_decode($data);
+            for ($i = 0; $i < strlen($string); $i++) {
+                $char = substr($string, $i, 1);
+                $keychar = substr($key, ($i % strlen($key)) - 1, 1);
+                $char = chr(ord($char) - ord($keychar));
+                $result .= $char;
+            }
+            return $result;
+    }
 ?>

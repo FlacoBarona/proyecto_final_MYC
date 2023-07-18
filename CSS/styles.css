@@ -13,3 +13,188 @@ body, html{
     padding: 200px;
     text-align: center;
 }
+
+footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 30px 0;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+
+  .footer-links {
+    margin-bottom: 15px;
+  }
+  
+  .footer-links a {    
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+
+  .footer-info {
+    text-align: center;
+  }
+  
+  .footer-info p {
+    margin: 5px 0;
+  }
+  
+  
+  .footer-info i {
+    margin-right: 5px;
+    color: #72f24c;
+  }
+  
+  
+  .footer-copyright {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 30px 0;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: center;
+  }
+  
+
+  .social-icons {
+    font-size: 24px;
+  }
+  
+  .social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+
+  .navbar-brand{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #212529;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: flicker 3600s infinite;
+}
+
+.navbar-brand:hover{
+    transform: scale(1.15);
+    background-color: #212529;
+    color: #ffffff;
+}
+
+.log-in{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #212529;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.log-in:hover{
+    transform: scale(1.15);
+    background-color: #212529;
+    color: #72f24c;
+}
+
+.shop-car{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #212529;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.shop-car:hover{
+    transform: scale(1.25);
+    background-color: #212529;
+    color: #ecbb2e;
+}
+
+.log-out{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #212529;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.log-out:hover{
+    transform: scale(1.15);
+    background-color: #212529;
+    color: #FF0000;
+}    
+
+.icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+.icon-boo {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+  transform: scaleX(-1);
+}  
+
+.icon-cart {
+  width: 35px;
+  height: 35px;
+  margin-left: 5px;
+  margin-right: 5px;        
+}
+
+@keyframes flicker {
+  0% {
+    text-shadow: 0 0 10px rgba(238, 130, 238, 0.8), 0 0 20px rgba(238, 130, 238, 0.8), 0 0 30px rgba(238, 130, 238, 0.8), 0 0 40px rgba(238, 130, 238, 0.8), 0 0 70px rgba(238, 130, 238, 0.8), 0 0 80px rgba(238, 130, 238, 0.8), 0 0 100px rgba(238, 130, 238, 0.8);
+  }
+  50% {
+    text-shadow: none;
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(238, 130, 238, 0.8), 0 0 20px rgba(238, 130, 238, 0.8), 0 0 30px rgba(238, 130, 238, 0.8), 0 0 40px rgba(238, 130, 238, 0.8), 0 0 70px rgba(238, 130, 238, 0.8), 0 0 80px rgba(238, 130, 238, 0.8), 0 0 100px rgba(238, 130, 238, 0.8);
+  }
+}
