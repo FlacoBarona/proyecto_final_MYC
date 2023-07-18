@@ -63,8 +63,8 @@ if ($id == '' || $token == '') {
 }
 
 if (isset($_SESSION['user_name'])) {
-  $boton1 .= '<a href="metodosPago.php" class="btn btn-primary">Comprar ahora</a>';
-  $boton2 .= '<button class="btn btn-outline-primary" type="button" onclick="addProducto(' . $id . ', \'' . $token_tmp . '\')">Agregar al carrito</button>';
+  $boton1 .= '<a href="metodosPago.php" class="btn btn-primary">Comprar ahora</a>';"<img class='icon-cart' src='https://media.giphy.com/media/EopV0wKH3USE9F7fhe/giphy.gif' alt='Icon'>";
+  $boton2 .= '<button class="shop-car" type="button" onclick="addProducto(' . $id . ', \'' . $token_tmp . '\')">Agregar al carrito</button>';"<img class='icon-cart' src='https://cdn.pixabay.com/animation/2023/03/22/04/48/04-48-41-618_512.gif' alt='Icon'>";
 }
 
 ?>
@@ -88,6 +88,7 @@ if (isset($_SESSION['user_name'])) {
       <div class="container">
         <a href="#" class="navbar-brand">
           <strong>Tienda de videojuegos</strong>
+          <img class='icon-boo' src='https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/bc25ec3f-b1c8-4630-91e9-1e260b289f2d/d91zy67-424b516e-5eee-416e-94a8-cc5cb5eb718a.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2JjMjVlYzNmLWIxYzgtNDYzMC05MWU5LTFlMjYwYjI4OWYyZFwvZDkxenk2Ny00MjRiNTE2ZS01ZWVlLTQxNmUtOTRhOC1jYzVjYjVlYjcxOGEuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Qr0N9B4Rk1sgjiO7aP9b1VB25B2Cl6C9QLYrFMBTl48' alt='Icon'>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -95,8 +96,9 @@ if (isset($_SESSION['user_name'])) {
         <div class="collapse navbar-collapse" id="navbarHeader">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           </ul>
-          <a href="checkout.php" class="btn btn-primary">
+          <a href="checkout.php" class="shop-car">
             Carrito <samp id="num_cart" class="badge bg-secondary"><?php echo $num_cart ?></samp>
+            <img class='icon' src='https://media2.giphy.com/media/Ut9IfYd8U1C0CNQi76/200w.gif?cid=790b761157x2ne14nnh4gszmrgij3jieotmmrk5rlf0mornr&ep=v1_gifs_search&rid=200w.gif&ct=g' alt='Icon'>
           </a>
         </div>
 
